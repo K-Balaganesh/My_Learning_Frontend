@@ -1,0 +1,44 @@
+<div class="auth-container">
+  <h2>Login</h2>
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <div class="form-group">
+      <input
+        type="text"
+        id="username"
+        [(ngModel)]="user.username"
+        name="username"
+        placeholder="Username"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="password"
+        id="password"
+        [(ngModel)]="user.password"
+        name="password"
+        placeholder="Password"
+        required
+      />
+    </div>
+
+    <div class="form-group">
+      <select id="role" [(ngModel)]="user.role" name="role" required>
+        <option value="" disabled selected>Select Role</option>
+        <option value="STUDENT">Student</option>
+        <option value="FACULTY">Faculty</option>
+      </select>
+    </div>
+
+    <button type="submit">Login</button>
+
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+    <hr />
+
+    <div class="center-link">
+      <a href="http://localhost:4200/signup" class="logged-button">Sign Up First</a>
+    </div>
+  </form>
+</div>

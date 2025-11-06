@@ -1,0 +1,34 @@
+<!-- src/app/faculty/faculty-query/faculty-query.component.html -->
+<div class="query-container">
+  <h2>Student Queries</h2>
+
+  <div *ngIf="queries.length > 0; else noQueries">
+    <ul>
+      <li *ngFor="let query of queries">
+        <p><strong>Student ID:</strong> {{ query.student.id || 'N/A' }}</p>
+        <p><strong>Question:</strong> {{ query.question }}</p>
+        <p><em>Asked on: {{ query.askedDate | date:'short' }}</em></p>
+
+        <div *ngIf="query.response">
+          <p><strong>Response:</strong> {{ query.response }}</p>
+          <p><em>Responded on: {{ query.respondedDate | date:'short' }}</em></p>
+        </div>
+
+        <div *ngIf="!query.response">
+          <textarea
+            rows="3"
+            [(ngModel)]="replyTextMap[query.id!]"
+            placeholder="Enter your reply..."
+          ></textarea>
+          <button (click)="submitReplyTo(query.id!)">Send Reply</button>
+        </div>
+
+        <hr />
+      </li>
+    </ul>
+  </div>
+
+  <ng-template #noQueries>
+    <p>No queries to display.</p>
+  </ng-template>
+</div>

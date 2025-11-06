@@ -1,0 +1,90 @@
+<div class="registration-container">
+  <h2>Student Registration Form</h2>
+
+  <!-- If already registered -->
+  <div *ngIf="!formEnabled && successMessage" class="info-message">
+    <p>{{ successMessage }}</p>
+  </div>
+
+  <!-- Registration form -->
+  <form *ngIf="formEnabled" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" [(ngModel)]="studentRegistration.name" name="name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="age">Age:</label>
+      <input type="number" id="age" [(ngModel)]="studentRegistration.age" name="age" required />
+    </div>
+
+    <div class="form-group">
+      <label for="gender">Gender:</label>
+      <select id="gender" [(ngModel)]="studentRegistration.gender" name="gender" required>
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="no">Contact Number:</label>
+      <input type="text" id="no" [(ngModel)]="studentRegistration.no" name="no" required />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Registered Username (Email):</label>
+<input type="email" id="email" [(ngModel)]="studentRegistration.email" name="email" required />
+
+    </div>
+
+    <div class="form-group">
+      <label for="course">Course:</label>
+      <select type="text" id="course" [(ngModel)]="studentRegistration.course" name="course" required >
+        <option value="">Select Course</option>
+<option value="DSA">DSA</option>
+<option value="Python">Python</option>
+<option value="Java">Java</option>
+<option value="JavaScript">JavaScript</option>
+<option value="Frontend">Frontend</option>
+<option value="Machine Learning">Machine Learning</option>
+<option value="React">React</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="paymentmethod">Payment Method:</label>
+      <select
+        type="text"
+        id="paymentmethod"
+        [(ngModel)]="studentRegistration.paymentmethod"
+        name="paymentmethod"
+        required
+      >
+        <option value="">Select Payment</option>
+        <option value="UPI">UPI</option>
+        <option value="Cash">Cash</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="session">Session:</label>
+      <select type="text" id="session" [(ngModel)]="studentRegistration.session" name="session" required>
+       <option value="">Select Session</option>
+        <option value="online">Morning</option>
+        <option value="offline">Evening</option>
+    </select>
+    </div>
+
+    <div class="form-group">
+      <label for="file">Upload Document (Optional):</label>
+      <input type="file" id="file" (change)="onFileSelected($event)" />
+    </div>
+
+    <button type="submit">Submit Registration</button>
+
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+  </form>
+</div>

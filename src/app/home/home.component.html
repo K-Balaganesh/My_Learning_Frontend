@@ -1,0 +1,234 @@
+<div class="home-container">
+  <!-- Slider Section -->
+  <div class="main-container">
+    <div class="slide-container">
+      <div
+        class="slider"
+        [style.transform]="'translateX(-' + currentIndex * 100 + '%)'"
+      >
+        <div class="slide" *ngFor="let img of images">
+          <img [src]="img" alt="Slide image" />
+        </div>
+      </div>
+    </div>
+
+    <div class="slider-btns">
+      <button class="btn-pre" (click)="prevSlide()">&#10094;</button>
+      <button class="btn-next" (click)="nextSlide()">&#10095;</button>
+    </div>
+
+    <div class="dot-slide">
+      <span
+        class="dot"
+        *ngFor="let img of images; let i = index"
+        [class.active]="i === currentIndex"
+        (click)="goToSlide(i)"
+      ></span>
+    </div>
+  </div>
+
+  <!-- Welcome Title -->
+  <h2 class="section-title">
+    Welcome to <strong>My Learning</strong> - Your Gateway to Skill Mastery!
+  </h2>
+
+  <!-- Paragraph -->
+  <p class="para1">
+    Your personalized path to success. Discover top-quality courses tailored in
+    your preferred language. Whether you're a beginner or an expert, there's
+    always something new to learn. Register quickly and gain instant access to
+    powerful learning resources. Experience the flexibility of online and the
+    focus of offline classes. Learn from certified trainers with real-world
+    expertise. Get hands-on with practical projects and real-time feedback.
+    Track your progress with our intuitive learning dashboard. Earn valuable
+    certificates that boost your resume and career. Start your learning journey
+    today — flexible, accessible, and future-ready!
+  </p>
+
+  <!-- Achievement Title -->
+  <h2 class="section-title">Achievement</h2>
+
+  <!-- Experience Section -->
+  <div class="experience-container">
+    <div class="experience-item">
+      <img class="image" src="assets/experience.png" alt="Experience" />
+      <h2>10 Years</h2>
+      <h2>Experience</h2>
+    </div>
+    <div class="experience-item">
+      <img class="image" src="assets/office.png" alt="Branches" />
+      <h2>20+</h2>
+      <h2>Branches</h2>
+    </div>
+    <div class="experience-item">
+      <img class="image" src="assets/curriculum.png" alt="Courses" />
+      <h2>40+</h2>
+      <h2>Courses</h2>
+    </div>
+    <div class="experience-item">
+      <img class="image" src="assets/online-certificate.png" alt="Certificate" />
+      <h2>10K+ Courses</h2>
+      <h2>Completions</h2>
+    </div>
+  </div>
+
+  <!-- Weekly Session Plan -->
+  <h2 class="section-title">Weekly Session Plan</h2>
+<section class="session-wrapper">
+  <div class="session-schedule">
+    
+    <!-- Morning Schedule -->
+    <div class="session-type">
+      <h3>🌅 Morning Sessions</h3>
+      <ul>
+        <li><strong>Monday:</strong> DSA, Python</li>
+        <li><strong>Tuesday:</strong> JavaScript, React</li>
+        <li><strong>Wednesday:</strong> Java, Machine Learning</li>
+        <li><strong>Thursday:</strong> React, Frontend</li>
+        <li><strong>Friday:</strong> DSA, JavaScript</li>
+        <li><strong>Saturday:</strong> Python, Frontend</li>
+        <li><strong>Sunday:</strong> Machine Learning, JavaScript</li>
+      </ul>
+    </div>
+
+    <!-- Evening Schedule -->
+    <div class="session-type">
+      <h3>🌙 Evening Sessions</h3>
+      <ul>
+        <li><strong>Monday:</strong> Java</li>
+        <li><strong>Tuesday:</strong> Frontend, Machine Learning</li>
+        <li><strong>Wednesday:</strong> Python, DSA</li>
+        <li><strong>Thursday:</strong> JavaScript, Java</li>
+        <li><strong>Friday:</strong> Machine Learning, React</li>
+        <li><strong>Saturday:</strong> Java, React</li>
+        <li><strong>Sunday:</strong> DSA, Frontend</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="session-image">
+    <img src="assets/pic1.jpg" alt="Session Illustration" />
+  </div>
+</section>
+
+
+  <!-- Our Team Section -->
+  <h2 class="section-title">Our Team</h2>
+  <div class="team-row">
+    <div class="team-column">
+      <div class="card">
+        <img class="teamimag" src="assets/team2.jpeg" alt="Jane" />
+        <div class="card-container">
+          <h2>Jane Doe</h2>
+          <p class="title">CEO & Founder</p>
+          <p>
+            Passionate about building learning empowering
+            students through technology.
+          </p>
+          <p>
+            <a href="mailto:jane&#64;learnhub.com">jane&#64;learnhub.com</a>
+          </p>
+          <button class="button">Contact</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-column">
+      <div class="card">
+        <img class="teamimag" src="assets/team3.jpeg" alt="Mike" />
+        <div class="card-container">
+          <h2>Mike Ross</h2>
+          <p class="title">Art Director</p>
+          <p>
+            Creative lead ensuring our learning content is visually engaging and
+            impactful.
+          </p>
+          <p>
+            <a href="mailto:mike&#64;learnhub.com">mike&#64;learnhub.com</a>
+          </p>
+          <button class="button">Contact</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="team-column">
+      <div class="card">
+        <img class="teamimag" src="assets/team1.jpeg" alt="John" />
+        <div class="card-container">
+          <h2>Olivia</h2>
+          <p class="title">Designer</p>
+          <p>
+            Skilled designer bringing user-friendly interfaces and creative
+            learning experiences.
+          </p>
+          <p>
+            <a href="mailto:Olivia&#64;learnhub.com">jOlivia&#64;learnhub.com</a>
+          </p>
+          <button class="button">Contact</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <h2 class="section-title">About Us</h2>
+  <p class="para1">
+    Our platform provides a comprehensive learning experience for students and
+    professionals. We focus on practical skill-building, expert mentoring, and
+    flexible session formats. Join us and grow with a community of passionate
+    learners who believe in continuous growth.
+  </p>
+
+  <p class="para1">
+    We collaborate with industry experts, educators, and mentors to deliver
+    real-world knowledge. Our goal is to bridge the gap between theory and
+    practice, helping you build skills that matter in your career.
+  </p>
+
+  <br />
+  <hr />
+
+  <!-- Footer Section -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-column">
+        <h4>Our Mission</h4>
+        <p>
+          To empower learners worldwide by providing high-quality, affordable,
+          and accessible education tailored for the future workforce.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Courses</a></li>
+          <li><a href="#">Mentorship</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4>Contact</h4>
+        <p>
+          <a href="mailto:{{ supportEmail }}">{{ supportEmail }}</a>
+        </p>
+        <p>Phone: +91 98765 43210</p>
+        <p>Address: 123 Learning Street, Coimbatore, India</p>
+      </div>
+
+      <div class="footer-column footer-social">
+  <h4>Follow Us</h4>
+  <ul>
+    <li><a href="#">Facebook</a></li>
+    <li><a href="#">Instagram</a></li>
+    <li><a href="#">LinkedIn</a></li>
+    <li><a href="#">Twitter</a></li>
+  </ul>
+</div>
+
+    </div>
+  </footer>
+</div>

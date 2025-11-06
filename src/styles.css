@@ -1,1 +1,31 @@
-/* You can add global styles to this file, and also import other style files */
+/* Prevent horizontal scrolling */
+html {
+  overflow-x: hidden; /* Crucial */
+  width: 100%;
+  box-sizing: border-box; /* Ensure universal box-sizing */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Crucial */
+  width: 100%;
+  min-width: 0; /* Added: Prevents body from having a minimum width that could cause overflow */
+  box-sizing: border-box; /* Ensure universal box-sizing */
+}
+
+/* Prevent child elements from causing horizontal scroll */
+* {
+  box-sizing: border-box;
+}
+
+.container,
+.main-container,
+.content {
+  max-width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box; /* Ensure consistency */
+  width: 100%; /* Ensure they take full available width */
+  min-width: 0; /* Added: Prevents these from forcing minimum widths */
+}

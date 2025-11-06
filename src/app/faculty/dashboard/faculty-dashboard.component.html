@@ -1,0 +1,145 @@
+<div class="dashboard-container">
+  <h1>Faculty Dashboard</h1>
+
+  <!-- Upload Assignment -->
+  <div class="dashboard-section">
+    <h2>Upload Assignment</h2>
+    <div class="upload-form">
+      <div class="form-group">
+        <label for="assignmentTitle">Assignment Title:</label>
+        <input
+          type="text"
+          id="assignmentTitle"
+          [(ngModel)]="newAssignmentTitle"
+          name="newAssignmentTitle"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="assignmentFile">Select File:</label>
+        <input
+          type="file"
+          id="assignmentFile"
+          (change)="onAssignmentFileSelected($event)"
+          required
+        />
+      </div>
+
+      <button (click)="uploadAssignment()">Upload Assignments & Ebooks</button>
+    </div>
+
+    <h3>Existing Assignments & Ebooks<br></h3>
+    <div *ngIf="assignments.length > 0; else noAssignments">
+      <ul>
+        <li *ngFor="let assignment of assignments">
+          {{ assignment.title }} (Uploaded: {{ assignment.uploadDate | date:'short' }})
+          <a *ngIf="assignment.id && assignment.filename" 
+             (click)="openFile(assignment.id!, 'assignment')">
+             {{ assignment.filename }}
+          </a>
+        </li>
+      </ul>
+    </div>
+    <ng-template #noAssignments>
+      <p>No assignments uploaded yet.</p>
+    </ng-template>
+  </div>
+
+  <!-- Student Queries -->
+  <div class="dashboard-section">
+    <h2>Student Queries</h2>
+    <div *ngIf="allQueries.length > 0; else noQueries">
+      <ul class="query-list">
+        <li *ngFor="let query of allQueries">
+          <p><strong>Student ID:</strong> {{ query.student.id || 'N/A' }}</p>
+          <p><strong>Question:</strong> {{ query.question }}</p>
+          <p><em>Asked on: {{ query.askedDate | date:'short' }}</em></p>
+
+          <div *ngIf="query.response">
+            <p><strong>Response:</strong> {{ query.response }}</p>
+            <p><em>Responded on: {{ query.respondedDate | date:'short' }}</em></p>
+          </div>
+
+          <div *ngIf="!query.response" class="response-section">
+            <textarea
+              rows="3"
+              placeholder="Type your response here..."
+              [(ngModel)]="responseTexts[query.id!]">
+            </textarea>
+            <button (click)="respondToQuery(query.id!)">Respond</button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <ng-template #noQueries>
+      <p>No student queries at the moment.</p>
+    </ng-template>
+  </div>
+
+  <!-- Student Registrations -->
+<div class="dashboard-section">
+  <h2>All Student Registrations</h2>
+
+  <div class="filter-section">
+    <label>Filter by ID:<input type="text" [(ngModel)]="filterId" placeholder="Enter ID"></label>
+    <label>Filter by Name:<input type="text" [(ngModel)]="filterName" placeholder="Enter Name"></label>
+    <label>Filter by Course:<input type="text" [(ngModel)]="filterCourse" placeholder="Enter Course"></label>
+    <button (click)="resetFilters()">Reset Filters</button>
+  </div>
+
+  <div *ngIf="studentRegistrations.length > 0; else noStudentRegistrations" class="registration-table">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Course</th>
+          <th>Session</th>
+          <th>Document</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reg of filteredRegistrations()">
+          <td>{{ reg.id }}</td>
+          
+          <td *ngIf="editId !== reg.id">{{ reg.name }}</td>
+          <td *ngIf="editId === reg.id"><input [(ngModel)]="editForm.name"></td>
+          
+          <td *ngIf="editId !== reg.id">{{ reg.email }}</td>
+          <td *ngIf="editId === reg.id"><input [(ngModel)]="editForm.email"></td>
+          
+          <td *ngIf="editId !== reg.id">{{ reg.course }}</td>
+          <td *ngIf="editId === reg.id"><input [(ngModel)]="editForm.course"></td>
+          
+          <td *ngIf="editId !== reg.id">{{ reg.session }}</td>
+          <td *ngIf="editId === reg.id"><input [(ngModel)]="editForm.session"></td>
+          
+          <td>
+            <ng-container *ngIf="reg.filename; else noDoc">
+              <a (click)="openFile(reg.id!, 'student')">{{ reg.filename }}</a>
+            </ng-container>
+            <ng-template #noDoc>N/A</ng-template>
+          </td>
+          
+          <td class="actions-cell">
+            <ng-container *ngIf="editId !== reg.id">
+              <button class="table-btn edit-btn" (click)="startEdit(reg)">Edit</button>
+              <button class="table-btn delete-btn" (click)="deleteStudent(reg.id!)">Delete</button>
+            </ng-container>
+            <ng-container *ngIf="editId === reg.id">
+              <button class="table-btn save-btn" (click)="saveEdit(reg.id!)">Save</button>
+              <button class="table-btn cancel-btn" (click)="cancelEdit()">Cancel</button>
+            </ng-container>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <ng-template #noStudentRegistrations>
+    <p>No student registrations found.</p>
+  </ng-template>
+</div>
+</div>

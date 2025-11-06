@@ -1,0 +1,34 @@
+<nav class="navbar">
+  <div class="navbar-brand">
+    <img src="assets/mylearninglogo.png" alt="MyLearning Logo" class="logo">
+    <a class="brand-heading" routerLink="/home">My Learning</a>
+  </div>
+
+  <ul class="navbar-nav">
+    <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+    <li *ngIf="!isLoggedIn"><a routerLink="/login" routerLinkActive="active">Login</a></li>
+    <li *ngIf="!isLoggedIn"><a routerLink="/signup" routerLinkActive="active">Signup</a></li>
+    <li><a routerLink="/about" routerLinkActive="active">About</a></li>
+
+    <!-- Student Navigation -->
+    <ng-container *ngIf="isLoggedIn && userRole === 'ROLE_STUDENT'">
+      <li><a routerLink="/register" routerLinkActive="active">Register</a></li>
+      <li><a routerLink="/student-dashboard" routerLinkActive="active">Student Dashboard</a></li>
+      <li><a routerLink="/datalist" routerLinkActive="active">Datalist</a></li>
+    </ng-container>
+
+    <!-- Faculty Navigation -->
+    <ng-container *ngIf="isLoggedIn && userRole === 'ROLE_FACULTY'">
+      <li><a routerLink="/faculty-dashboard" routerLinkActive="active">Faculty Dashboard</a></li>
+    </ng-container>
+
+    <!-- Logout -->
+    <li *ngIf="isLoggedIn">
+      <button (click)="logout()">Logout</button>
+    </li>
+  </ul>
+</nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

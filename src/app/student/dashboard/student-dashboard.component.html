@@ -1,0 +1,49 @@
+<div class="dashboard-container">
+  <h1>Student Dashboard</h1>
+
+  <!-- Assignments Section -->
+  <div class="dashboard-section">
+    <h2>Assignments & Ebooks</h2><br>
+    <div *ngIf="assignments.length > 0; else noAssignments">
+      <ul>
+        <li *ngFor="let assignment of assignments">
+          {{ assignment.title }} (Uploaded: {{ assignment.uploadDate | date }})
+          <button *ngIf="assignment.filename" (click)="downloadAssignment(assignment.filename)">
+            Download Assignment
+          </button>
+        </li>
+      </ul>
+    </div>
+    <ng-template #noAssignments>
+      <p>No assignments posted.</p>
+    </ng-template>
+  </div>
+
+  <!-- Queries Section -->
+  <div class="dashboard-section">
+    <h2>Your Queries</h2>
+    <div class="query-form">
+      <textarea rows="4" placeholder="Type your question..." [(ngModel)]="newQueryText"></textarea>
+      <button (click)="submitQuery()">Submit Query</button>
+    </div>
+
+    <div *ngIf="studentQueries.length > 0; else noQueries">
+      <ul>
+        <li *ngFor="let query of studentQueries">
+          <p><strong>Question:</strong> {{ query.question }}</p>
+<p><em>Asked on: {{ query.askedDate | date:'short' }}</em></p>
+          <div *ngIf="query.response">
+            <p><strong>Response:</strong> {{ query.response }}</p>
+            <p><em>Responded on: {{ query.respondedDate | date:'short' }}</em></p>
+          </div>
+          <div *ngIf="!query.response">
+            <p><em>Pending response...</em></p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <ng-template #noQueries>
+      <p>No queries submitted yet.</p>
+    </ng-template>
+  </div>
+</div>

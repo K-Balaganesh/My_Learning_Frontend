@@ -1,0 +1,59 @@
+<div class="list-container">
+
+  <!-- Filter Section -->
+  <div class="filter-bar" style="margin-bottom: 15px; text-align: center;">
+    <label style="margin-right: 10px;">
+      Search Name:
+      <input [(ngModel)]="searchName" (input)="filterSamples()" placeholder="Enter name..." />
+    </label>
+    <label style="margin-right: 10px;">
+      Filter Course:
+      <input [(ngModel)]="filterCourse" (input)="filterSamples()" placeholder="e.g. BCA" />
+    </label>
+    <label>
+      Filter Session:
+      <input [(ngModel)]="filterSession" (input)="filterSamples()" placeholder="e.g. 2024-25" />
+    </label>
+  </div>
+
+  <!-- Table Section -->
+  <div *ngIf="samples.length > 0; else noData">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Mobile No</th><th>Email</th>
+          <th>Course</th><th>Payment</th><th>Session</th><th>File</th><th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sample of samples">
+          <td data-label="ID">{{ sample.id }}</td>
+          <td data-label="Name">{{ sample.name }}</td>
+          <td data-label="Age">{{ sample.age }}</td>
+          <td data-label="Gender">{{ sample.gender }}</td>
+          <td data-label="Mobile No">{{ sample.no }}</td>
+          <td data-label="Email">{{ sample.email }}</td>
+          <td data-label="Course">{{ sample.course }}</td>
+          <td data-label="Payment">{{ sample.paymentmethod }}</td>
+          <td data-label="Session">{{ sample.session }}</td>
+          <td data-label="File">
+            <a *ngIf="sample.filename" [href]="'http://localhost:8080/api/samplepage/download/' + sample.id" target="_blank">
+              {{ sample.filename }}
+            </a>
+          </td>
+          <td data-label="Actions">
+            <button class="btn-action" (click)="editSample(sample)">Edit</button>
+            <button class="btn-action" (click)="deleteSample(sample.id!)">Delete</button>
+            <button class="btn-action" (click)="viewFile(sample)">View</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<ng-template #noData>
+  <h3 style="text-align:center;">No Data</h3>
+</ng-template>
+

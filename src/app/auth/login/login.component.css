@@ -1,0 +1,110 @@
+/* ✅ Global scrollbar removal */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden; /* Remove horizontal scrollbar */
+  overflow-y: auto;   /* Keep vertical scrollbar if needed */
+}
+
+/* ✅ Form container styling */
+.auth-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 30px;
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* ✅ Header */
+.auth-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #333;
+  font-size: 28px;
+}
+
+/* ✅ Input/Select field wrapper */
+.form-group {
+  margin-bottom: 30px;
+}
+
+/* ✅ Input and Dropdown Fields */
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ccc;
+  border-radius: 12px; /* Rounded border for dropdown too */
+  font-size: 16px;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+  box-sizing: border-box;
+  background-color: #fff;
+  appearance: none; /* Hides default browser styling */
+}
+
+/* ✅ Dropdown Styling with custom appearance */
+.form-group select {
+  background-image: url('data:image/svg+xml;charset=UTF-8,<svg fill="black" height="18" viewBox="0 0 24 24" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+/* ✅ Focus effect */
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #28a745;
+  box-shadow: 0 0 5px rgba(40, 167, 69, 0.4);
+}
+
+/* ✅ Submit Button */
+button[type='submit'] {
+  display: block;
+  width: 40%;
+  margin: 0 auto 20px auto;
+  padding: 10px 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type='submit']:hover {
+  background-color: #218838;
+}
+
+/* ✅ Error Message */
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* ✅ Link at the bottom */
+.center-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.logged-button {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  display: inline-block;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.logged-button:hover {
+  color: #ff0000;
+}
